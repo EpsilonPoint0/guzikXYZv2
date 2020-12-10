@@ -10,6 +10,8 @@ gem 'bootstrap-sass',   '3.4.1'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
+# For secure password
+gem 'bcrypt', '3.1.13'
 # For integration testing
 gem 'rails-controller-testing'
 # Use SCSS for stylesheets
