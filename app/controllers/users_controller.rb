@@ -12,7 +12,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-
+      # display the message on the first page after the redirect
+      flash[:success] = "Thank you for joining!"
+      redirect_to @user
     else
       render 'new'
     end
