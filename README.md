@@ -27,3 +27,17 @@ If the test suite passes, you'll be ready to run the app in a local server:
 ```
 $ rails server
 ```
+
+## Heroku Deployment
+
+Login to the Heroku CLI
+
+```
+$ heroku login
+```
+
+Migrate the database
+
+```
+$ heroku rake db:migrate -a guzikxyz
+```
