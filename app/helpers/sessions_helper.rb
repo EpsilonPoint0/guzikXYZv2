@@ -5,9 +5,9 @@ module SessionsHelper
 
   # Remembers a user in a persistent session.
   def remember(user)
-    User.remember
-    cookies.permanent.encrypted[:user_id] = User.id
-    cookies.permanent[:remember_token] = User.remember_token
+    user.remember
+    cookies.permanent.encrypted[:user_id] = user.id
+    cookies.permanent[:remember_token] = user.remember_token
   end
 
   # Returns the user corresponding to the remember token cookie.
@@ -16,7 +16,7 @@ module SessionsHelper
       @current_user ||= User.find_by(id: user_id)
     elsif (user_id = cookies.encrypted[:user_id])
       user = User.find_by(id: user_id)
-      if user && User.authenticated?(cookies[:remember_token])
+      if user && user.authenticated?(cookies[:remember_token])
         log_in user
         @current_user = user
       end
@@ -30,7 +30,7 @@ module SessionsHelper
 
   # Forgets a persistent session.
   def forget(user)
-    User.forget
+    user.forget
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
   end
